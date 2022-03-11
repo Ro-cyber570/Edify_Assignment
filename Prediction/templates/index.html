@@ -1,0 +1,31 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Upload file</label>
+    <input type="file" name="file" required="true">
+    <p>Only csv files</p>
+    <label>Hyperparameters value change</label>
+    <br>
+    <label>Number of neighbours</label>
+    <input type="number" name="n_neighbours" required="true">
+    <br>
+    <label>Choose a weight:</label>
+
+<select name="weights" required="true">
+  <option value="uniform">uniform</option>
+  <option value="distance">distance</option>
+</select>
+<br>
+    <label>Target column</label>
+    <input type="text" name="target" required="true">
+    <button type="submit">Upload</button>
+    
+</form>
+<h1>Accuracy of this data set for KNN is :{{accuracy}}</h1>
+
+{% if graph %}
+<h1>Diabetes plot with glucose and insulin</h1>
+<div style="width:600;height:500">
+{{ graph|safe }}
+</div>
+{% endif %}
+
