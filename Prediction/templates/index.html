@@ -18,12 +18,21 @@
     <label>Target column</label>
     <input type="text" name="target" required="true">
     <button type="submit">Upload</button>
+{% if usedcols %}
+  <h2>Columns used</h2>
+  <h2>Uncheck the columns you dont want to use</h2>
+{%for i in usedcols%}
+  <input type="checkbox" name="checks[]" value="{{i}}" checked>
+  <li>{{ i }}</li>
+{%endfor%}
+{%endif%}
     
-</form>
+{%if accuracy%}
 <h1>Accuracy of this data set for KNN is :{{accuracy}}</h1>
-
+{%endif%}
+</form>
 {% if graph %}
-<h1>Diabetes plot with glucose and insulin</h1>
+<h1>Diabetes plot</h1>
 <div style="width:600;height:500">
 {{ graph|safe }}
 </div>
